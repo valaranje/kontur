@@ -13,22 +13,16 @@
 <body>
 
 <div id="app">
-
-  <!-- MAIN SCREEN -->
   <div id="main" class="screen active">
     <h2 id="city">Москва</h2>
     <div id="map"></div>
-
     <div class="cities">
       <button onclick="setCity('moscow')">Москва</button>
       <button onclick="setCity('kazan')">Казань</button>
       <button onclick="setCity('samara')">Самара</button>
     </div>
-
     <button class="btn start" onclick="startRun()">Начать забег</button>
   </div>
-
-  <!-- RUN SCREEN -->
   <div id="run" class="screen">
     <div id="run-map"></div>
     <div class="run-ui">
@@ -36,7 +30,6 @@
       <button class="btn stop" onclick="stopRun()">Стоп</button>
     </div>
   </div>
-
 </div>
 
 <script>
