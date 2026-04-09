@@ -1,7 +1,8 @@
 /* Навигация экранов */
 function go(id) {
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  const screen = document.getElementById(id);
+  if (screen) screen.classList.add("active");
 
   if (id === "main") setTimeout(initMap, 200);
 }
@@ -49,7 +50,7 @@ function startRun() {
     });
 
     route = new ymaps.Polyline([], {}, {
-      strokeColor: "#ffffff",
+      strokeColor: "#FF6A00",
       strokeWidth: 4
     });
     runMap.geoObjects.add(route);
