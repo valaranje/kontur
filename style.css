@@ -5,7 +5,6 @@ body {
   color: #FFFFFF;
 }
 
-/* ЭКРАНЫ */
 .screen {
   display: none;
   padding: 20px;
@@ -15,7 +14,6 @@ body {
   display: block;
 }
 
-/* ЛОГО */
 .logo-container {
   text-align: center;
   margin-top: 20px;
@@ -28,7 +26,6 @@ body {
   height: auto;
 }
 
-/* КНОПКИ */
 .btn {
   width: 90%;
   padding: 14px;
@@ -47,7 +44,6 @@ body {
   transform: scale(0.97);
 }
 
-/* КНОПКА НАЗАД */
 .back {
   background: none;
   color: #FFFFFF;
@@ -56,7 +52,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* КАРТОЧКИ ГОРОДОВ */
 .cities {
   display: flex;
   justify-content: center;
@@ -78,15 +73,13 @@ body {
   color: #0A0A0A;
 }
 
-/* КАРТА */
-#map, #run-map, #profile-map {
+#map, #run-map {
   height: 300px;
   border-radius: 16px;
   margin-bottom: 15px;
   overflow: hidden;
 }
 
-/* RUN UI */
 .run-ui {
   display: flex;
   justify-content: space-around;
@@ -98,7 +91,6 @@ body {
   margin: 0 5px;
 }
 
-/* Нижняя навигация */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -122,9 +114,12 @@ body {
   transform: scale(0.9);
 }
 
-/* Адаптив */
+#history-list {
+  margin-top: 10px;
+}
+
 @media (max-width: 400px) {
-  #map, #run-map, #profile-map {
+  #map, #run-map {
     height: 250px;
   }
   .btn {
