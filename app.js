@@ -1,13 +1,14 @@
-/* Навигация экранов */
+/* --- Навигация экранов --- */
 function go(id) {
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
   const screen = document.getElementById(id);
   if (screen) screen.classList.add("active");
 
   if (id === "main") setTimeout(initMap, 200);
+  if (id === "history") renderHistory();
 }
 
-/* Города */
+/* --- Города --- */
 const cities = {
   moscow: [55.75, 37.61],
   kazan: [55.79, 49.10],
@@ -15,7 +16,7 @@ const cities = {
 };
 let currentCity = "moscow";
 
-/* Основная карта */
+/* --- Основная карта --- */
 let map;
 function initMap() {
   if (map) return;
@@ -36,9 +37,10 @@ function setCity(city) {
     city === "kazan" ? "Казань" : "Самара";
 }
 
-/* RUN */
-let runMap, route;
+/* --- RUN --- */
+let runMap, route, runnerPlacemark;
 let tracking = true;
+let watchId;
 
 function startRun() {
   go("run");
@@ -55,22 +57,77 @@ function startRun() {
     });
     runMap.geoObjects.add(route);
 
+    runnerPlacemark = null;
     startTracking();
   });
 }
 
 function pauseRun() { tracking = !tracking; }
-function stopRun() { go("main"); }
 
-/* GPS трекинг */
+function stopRun() {
+  // Замыкание маршрута
+  if (route && route.geometry.getCoordinates().length > 2) {
+    const coords = route.geometry.getCoordinates();
+    coords.push(coords[0]);
+    route.geometry.setCoordinates(coords);
+
+    saveRun(coords);
+  }
+
+  if (watchId) navigator.geolocation.clearWatch(watchId);
+  go("main");
+}
+
+/* --- GPS трекинг --- */
 function startTracking() {
-  navigator.geolocation.watchPosition(pos => {
+  watchId = navigator.geolocation.watchPosition(pos => {
     if (!tracking) return;
     const coords = [pos.coords.latitude, pos.coords.longitude];
-    route.geometry.setCoordinates([
-      ...route.geometry.getCoordinates(),
-      coords
-    ]);
-    runMap.setCenter(coords);
+
+    // Добавляем в маршрут
+    route.geometry.setCoordinates([...route.geometry.getCoordinates(), coords]);
+
+    // Маркер бегуна
+    if (!runnerPlacemark) {
+      runnerPlacemark = new ymaps.Placemark(coords, {}, {
+        iconLayout: 'default#image',
+        iconImageHref: 'img/runner.png',
+        iconImageSize: [20, 20],
+        iconImageOffset: [-10, -10]
+      });
+      runMap.geoObjects.add(runnerPlacemark);
+    } else {
+      runnerPlacemark.geometry.setCoordinates(coords);
+    }
+
+    // Центр карты
+    runMap.panTo(coords, {delay: 300});
+  }, {enableHighAccuracy: true});
+}
+
+/* --- История забегов --- */
+function saveRun(coords) {
+  const runs = JSON.parse(localStorage.getItem('runs') || '[]');
+  runs.push({date: new Date().toLocaleString(), path: coords});
+  localStorage.setItem('runs', JSON.stringify(runs));
+}
+
+function renderHistory() {
+  const listEl = document.getElementById('history-list');
+  const runs = JSON.parse(localStorage.getItem('runs') || '[]');
+  listEl.innerHTML = '';
+
+  if (runs.length === 0) {
+    listEl.innerHTML = '<p>Нет записей.</p>';
+    return;
+  }
+
+  runs.forEach((run, i) => {
+    const div = document.createElement('div');
+    div.innerHTML = `<b>${i+1}. ${run.date}</b> — ${run.path.length} точек`;
+    div.style.padding = '6px 0';
+    listEl.appendChild(div);
   });
+
+  document.getElementById('runs-count').innerText = runs.length;
 }
