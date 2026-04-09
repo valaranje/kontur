@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Контур Mini App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контур Mini App - Run</title>
 
-  <!-- Шрифт -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <!-- Яндекс Карты -->
-  <script src="https://api-maps.yandex.ru/2.1/?apikey=f7f8fdcb-bc92-4437-97ae-f3edbb4bc40a&lang=ru_RU"></script>
-
-  <!-- Стиль -->
-  <link rel="stylesheet" href="style.css">
-
+<script src="https://api-maps.yandex.ru/2.1/?apikey=f7f8fdcb-bc92-4437-97ae-f3edbb4bc40a&lang=ru_RU"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -37,22 +32,18 @@
   <div id="run" class="screen">
     <div id="run-map"></div>
     <div class="run-ui">
-      <button onclick="pauseRun()">Пауза</button>
-      <button onclick="stopRun()">Стоп</button>
+      <button class="btn pause" onclick="pauseRun()">Пауза</button>
+      <button class="btn stop" onclick="stopRun()">Стоп</button>
     </div>
   </div>
 
 </div>
 
-<!-- Telegram WebApp SDK -->
 <script>
   const tg = window.Telegram.WebApp;
-  tg.expand(); // Разворачиваем на весь экран
-  console.log("Telegram WebApp initialized", tg.initData);
+  tg.expand();
 </script>
 
-<!-- Логика карты и маршрутов -->
 <script src="app.js"></script>
-
 </body>
 </html>
