@@ -18,24 +18,24 @@ body {
 /* ЛОГО */
 .logo {
   text-align: center;
-  margin-top: 80px;
-  font-size: 36px;
+  margin-top: 60px;
+  font-size: 28px;
   font-weight: 700;
 }
 
 .subtitle {
   text-align: center;
   opacity: 0.6;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 /* КНОПКИ */
 .btn {
   width: 90%;
-  padding: 16px;
+  padding: 14px;
   margin: 10px auto;
   display: block;
-  border-radius: 18px;
+  border-radius: 16px;
   border: none;
   background: white;
   color: black;
@@ -59,43 +59,44 @@ body {
   background: none;
   color: white;
   border: none;
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
 /* INPUT */
 input {
   width: 90%;
-  padding: 14px;
+  padding: 12px;
   margin: 10px auto;
   display: block;
-  border-radius: 14px;
+  border-radius: 12px;
   border: none;
   background: #111;
   color: white;
   font-size: 14px;
 }
 
-/* TOP TABS (ПРОФИЛЬ / ЛИДЕРЫ) */
+/* TOP TABS */
 .topbar {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 10px;
 }
 
 .topbar button {
   flex: 1;
-  padding: 12px;
-  border-radius: 16px;
+  padding: 10px;
+  border-radius: 14px;
   background: #111;
   color: white;
   border: 1px solid #222;
+  font-size: 14px;
 }
 
 /* КАРТА */
-#map, #run-map {
-  height: 360px;
-  border-radius: 20px;
+#map, #run-map, #profile-map {
+  height: 300px;
+  border-radius: 16px;
   margin-bottom: 15px;
   overflow: hidden;
 }
@@ -104,16 +105,16 @@ input {
 .cities {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .cities button {
-  padding: 10px 18px;
+  padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid #333;
   background: #111;
   color: white;
-  font-size: 14px;
+  font-size: 13px;
   transition: 0.2s;
 }
 
@@ -124,21 +125,32 @@ input {
 /* RUN UI */
 .run-ui {
   position: fixed;
-  bottom: 20px;
+  bottom: 10px;
   width: 100%;
   text-align: center;
 }
 
 .run-ui button {
   margin: 5px;
-  padding: 10px 16px;
-  border-radius: 12px;
+  padding: 8px 14px;
+  border-radius: 10px;
   border: none;
 }
 
 /* ПОЛИТИКА */
 .policy {
-  font-size: 14px;
+  font-size: 13px;
   opacity: 0.7;
-  line-height: 1.5;
+  line-height: 1.4;
+}
+
+/* Адаптив */
+@media (max-width: 400px) {
+  #map, #run-map, #profile-map {
+    height: 250px;
+  }
+  .btn {
+    padding: 12px;
+    font-size: 14px;
+  }
 }
