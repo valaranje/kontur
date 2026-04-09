@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Контур Mini App</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
@@ -22,7 +21,8 @@
     <div class="logo-container">
       <img src="img/logo.png" alt="Логотип">
     </div>
-    <h2 id="city">Москва</h2>
+    <h2 id="greeting">Привет, Бегун!</h2>
+    <h3 id="city">Москва</h3>
     <div id="map"></div>
 
     <div class="cities">
@@ -43,11 +43,19 @@
     </div>
   </div>
 
+  <!-- HISTORY SCREEN -->
+  <div id="history" class="screen">
+    <h2>История забегов</h2>
+    <div id="history-list"></div>
+  </div>
+
   <!-- PROFILE SCREEN -->
   <div id="profile" class="screen">
     <button class="back" onclick="go('main')">←</button>
-    <h2 id="profile-name"></h2>
-    <div id="profile-map"></div>
+    <h2 id="profile-name">Бегун</h2>
+    <div id="profile-stats">
+      <p>Пробежек: <span id="runs-count">0</span></p>
+    </div>
   </div>
 
   <!-- Нижняя навигация -->
@@ -66,7 +74,5 @@
 </script>
 
 <script src="app.js"></script>
-
 </body>
-</html>
 </html>
