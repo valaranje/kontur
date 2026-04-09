@@ -65,15 +65,12 @@ function startRun() {
 function pauseRun() { tracking = !tracking; }
 
 function stopRun() {
-  // Замыкание маршрута
   if (route && route.geometry.getCoordinates().length > 2) {
     const coords = route.geometry.getCoordinates();
-    coords.push(coords[0]);
+    coords.push(coords[0]); // замыкание
     route.geometry.setCoordinates(coords);
-
     saveRun(coords);
   }
-
   if (watchId) navigator.geolocation.clearWatch(watchId);
   go("main");
 }
@@ -84,10 +81,8 @@ function startTracking() {
     if (!tracking) return;
     const coords = [pos.coords.latitude, pos.coords.longitude];
 
-    // Добавляем в маршрут
     route.geometry.setCoordinates([...route.geometry.getCoordinates(), coords]);
 
-    // Маркер бегуна
     if (!runnerPlacemark) {
       runnerPlacemark = new ymaps.Placemark(coords, {}, {
         iconLayout: 'default#image',
@@ -100,7 +95,6 @@ function startTracking() {
       runnerPlacemark.geometry.setCoordinates(coords);
     }
 
-    // Центр карты
     runMap.panTo(coords, {delay: 300});
   }, {enableHighAccuracy: true});
 }
@@ -116,18 +110,15 @@ function renderHistory() {
   const listEl = document.getElementById('history-list');
   const runs = JSON.parse(localStorage.getItem('runs') || '[]');
   listEl.innerHTML = '';
-
   if (runs.length === 0) {
     listEl.innerHTML = '<p>Нет записей.</p>';
     return;
   }
-
   runs.forEach((run, i) => {
     const div = document.createElement('div');
     div.innerHTML = `<b>${i+1}. ${run.date}</b> — ${run.path.length} точек`;
     div.style.padding = '6px 0';
     listEl.appendChild(div);
   });
-
   document.getElementById('runs-count').innerText = runs.length;
 }
