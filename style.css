@@ -52,10 +52,11 @@ body {
   margin-bottom: 10px;
 }
 
-.cities {
+.cities-scroll {
   display: flex;
-  justify-content: center;
+  overflow-x: auto;
   gap: 10px;
+  padding-bottom: 5px;
   margin: 15px 0;
 }
 
@@ -66,6 +67,7 @@ body {
   border: 1px solid #333;
   cursor: pointer;
   transition: 0.2s;
+  white-space: nowrap;
 }
 
 .city-card:hover {
