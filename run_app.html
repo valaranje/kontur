@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контур Mini App</title>
+
+  <!-- Шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Яндекс Карты -->
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=f7f8fdcb-bc92-4437-97ae-f3edbb4bc40a&lang=ru_RU"></script>
+
+  <!-- Стиль -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div id="app">
+
+  <!-- MAIN SCREEN -->
+  <div id="main" class="screen active">
+    <h2 id="city">Москва</h2>
+    <div id="map"></div>
+
+    <div class="cities">
+      <button onclick="setCity('moscow')">Москва</button>
+      <button onclick="setCity('kazan')">Казань</button>
+      <button onclick="setCity('samara')">Самара</button>
+    </div>
+
+    <button class="btn start" onclick="startRun()">Начать забег</button>
+  </div>
+
+  <!-- RUN SCREEN -->
+  <div id="run" class="screen">
+    <div id="run-map"></div>
+    <div class="run-ui">
+      <button onclick="pauseRun()">Пауза</button>
+      <button onclick="stopRun()">Стоп</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Telegram WebApp SDK -->
+<script>
+  const tg = window.Telegram.WebApp;
+  tg.expand(); // Разворачиваем на весь экран
+  console.log("Telegram WebApp initialized", tg.initData);
+</script>
+
+<!-- Логика карты и маршрутов -->
+<script src="app.js"></script>
+
+</body>
+</html>

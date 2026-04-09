@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- ЯНДЕКС КАРТЫ -->
+<script src="https://api-maps.yandex.ru/2.1/?apikey=f7f8fdcb-bc92-4437-97ae-f3edbb4bc40a&lang=ru_RU"></script>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="app">
+
+<!-- START -->
+<div id="start" class="screen active">
+  <h1 class="logo">КОНТУР</h1>
+  <p class="subtitle">Побегаем?</p>
+
+  <button class="btn" onclick="go('login')">Войти</button>
+  <button class="btn ghost" onclick="go('register')">Регистрация</button>
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="screen">
+  <button class="back" onclick="go('start')">←</button>
+
+  <input id="login-name" placeholder="Никнейм">
+  <input id="login-pass" type="password" placeholder="Пароль">
+
+  <button class="btn" onclick="login()">Войти</button>
+</div>
+
+<!-- REGISTER -->
+<div id="register" class="screen">
+  <button class="back" onclick="go('start')">←</button>
+
+  <input id="reg-name" placeholder="Никнейм">
+  <input id="reg-pass" placeholder="Пароль">
+  <input placeholder="Телефон">
+  <input placeholder="Email">
+
+  <button class="btn" onclick="register()">Далее</button>
+</div>
+
+<!-- PRIVACY -->
+<div id="privacy" class="screen">
+  <h2>Политика</h2>
+  <p class="policy">
+  Мы собираем минимальные данные: имя, маршрут и геолокацию.
+  </p>
+
+  <button class="btn" onclick="acceptPrivacy()">Принять</button>
+</div>
+
+<!-- MAIN -->
+<div id="main" class="screen">
+
+  <div class="topbar">
+    <div class="tab" onclick="go('profile')">Профиль</div>
+    <div class="tab" onclick="go('leaders')">Лидеры</div>
+    <div class="tab" onclick="go('menu')">☰</div>
+  </div>
+
+  <h2 id="city">Москва</h2>
+
+  <div id="map"></div>
+
+  <div class="cities">
+    <button onclick="setCity('moscow')">Москва</button>
+    <button onclick="setCity('kazan')">Казань</button>
+    <button onclick="setCity('samara')">Самара</button>
+  </div>
+
+  <button class="btn start" onclick="startRun()">Начать</button>
+</div>
+
+<!-- RUN -->
+<div id="run" class="screen">
+
+  <div id="run-map"></div>
+
+  <div class="run-ui">
+    <p id="distance">0.00 км</p>
+
+    <button onclick="pauseRun()">Пауза</button>
+    <button onclick="stopRun()">Стоп</button>
+  </div>
+
+</div>
+
+<!-- PROFILE -->
+<div id="profile" class="screen">
+  <button class="back" onclick="go('main')">←</button>
+
+  <h2 id="profile-name"></h2>
+</div>
+
+<!-- LEADERS -->
+<div id="leaders" class="screen">
+  <button class="back" onclick="go('main')">←</button>
+  <h2>Лидеры</h2>
+  <p>1. Ты</p>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="screen">
+  <button class="back" onclick="go('main')">←</button>
+  <h2>О нас</h2>
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
