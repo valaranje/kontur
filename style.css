@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #000;
-  color: white;
+  background: #0A0A0A;
+  color: #FFFFFF;
 }
 
 /* ЭКРАНЫ */
@@ -34,11 +34,12 @@ body {
   padding: 14px;
   margin: 10px auto;
   display: block;
-  border-radius: 16px;
+  border-radius: 18px;
   border: none;
-  background: white;
-  color: black;
-  font-weight: 500;
+  background: #FF6A00;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
   transition: 0.2s;
 }
 
@@ -46,50 +47,35 @@ body {
   transform: scale(0.97);
 }
 
-/* ВТОРИЧНЫЕ КНОПКИ */
-.ghost {
-  background: #111;
-  color: white;
-  border: 1px solid #333;
-}
-
 /* КНОПКА НАЗАД */
 .back {
   background: none;
-  color: white;
+  color: #FFFFFF;
   border: none;
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-/* INPUT */
-input {
-  width: 90%;
-  padding: 12px;
-  margin: 10px auto;
-  display: block;
-  border-radius: 12px;
-  border: none;
-  background: #111;
-  color: white;
-  font-size: 14px;
-}
-
-/* TOP TABS */
-.topbar {
+/* КАРТОЧКИ ГОРОДОВ */
+.cities {
   display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
 }
 
-.topbar button {
-  flex: 1;
-  padding: 10px;
-  border-radius: 14px;
-  background: #111;
-  color: white;
-  border: 1px solid #222;
-  font-size: 14px;
+.city-card {
+  padding: 10px 16px;
+  background: #1A1A1A;
+  border-radius: 16px;
+  border: 1px solid #333;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.city-card:hover {
+  background: #FF6A00;
+  color: #0A0A0A;
 }
 
 /* КАРТА */
@@ -100,47 +86,40 @@ input {
   overflow: hidden;
 }
 
-/* ГОРОДА */
-.cities {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-.cities button {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid #333;
-  background: #111;
-  color: white;
-  font-size: 13px;
-  transition: 0.2s;
-}
-
-.cities button:active {
-  background: #222;
-}
-
 /* RUN UI */
 .run-ui {
-  position: fixed;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 
 .run-ui button {
-  margin: 5px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  border: none;
+  flex: 1;
+  margin: 0 5px;
 }
 
-/* ПОЛИТИКА */
-.policy {
-  font-size: 13px;
-  opacity: 0.7;
-  line-height: 1.4;
+/* Нижняя навигация */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: #111;
+  padding: 10px 0;
+  border-top: 1px solid #333;
+}
+
+.bottom-nav button {
+  background: none;
+  border: none;
+  color: #FF6A00;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.bottom-nav button:active {
+  transform: scale(0.9);
 }
 
 /* Адаптив */
@@ -150,6 +129,10 @@ input {
   }
   .btn {
     padding: 12px;
+    font-size: 15px;
+  }
+  .city-card {
+    padding: 8px 12px;
     font-size: 14px;
   }
 }
