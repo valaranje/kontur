@@ -26,9 +26,9 @@
     <div id="map"></div>
 
     <div class="cities">
-      <button onclick="setCity('moscow')">Москва</button>
-      <button onclick="setCity('kazan')">Казань</button>
-      <button onclick="setCity('samara')">Самара</button>
+      <div class="city-card" onclick="setCity('moscow')">Москва</div>
+      <div class="city-card" onclick="setCity('kazan')">Казань</div>
+      <div class="city-card" onclick="setCity('samara')">Самара</div>
     </div>
 
     <button class="btn start" onclick="startRun()">Начать забег</button>
@@ -38,8 +38,8 @@
   <div id="run" class="screen">
     <div id="run-map"></div>
     <div class="run-ui">
-      <button onclick="pauseRun()">Пауза</button>
-      <button onclick="stopRun()">Стоп</button>
+      <button class="btn pause" onclick="pauseRun()">Пауза</button>
+      <button class="btn stop" onclick="stopRun()">Стоп</button>
     </div>
   </div>
 
@@ -48,6 +48,14 @@
     <button class="back" onclick="go('main')">←</button>
     <h2 id="profile-name"></h2>
     <div id="profile-map"></div>
+  </div>
+
+  <!-- Нижняя навигация -->
+  <div class="bottom-nav">
+    <button onclick="go('main')">🏠</button>
+    <button onclick="go('cities')">🌆</button>
+    <button onclick="go('history')">📜</button>
+    <button onclick="go('profile')">👤</button>
   </div>
 
 </div>
